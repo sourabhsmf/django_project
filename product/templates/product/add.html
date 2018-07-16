@@ -1,0 +1,20 @@
+<h1>Add Product </h1>
+
+<form action="{% url 'product:add' %}" method="POST" id="form-add-product">
+    {% csrf_token %}
+    <div class="product-body">
+        
+        <input type="text" name="product-name" placeholder="Name goes here">
+            {% if error_message.name %}<p style="color:red">{{ error_message.name }}</p> {% endif %}
+        
+        <input type="text" name="product-price" placeholder="Price goes here">
+            {% if error_message.price %}<p style="color:red">{{ error_message.price }}</p> {% endif %}
+        <input type="text" name="product-url" placeholder="URL goes here">
+            {% if error_message.url %}<p style="color:red">{{ error_message.url }}</p> {% endif %}
+        <input type="file" name="product-image" id="" >
+ 
+    </div>
+    <div class="product-footer" style="text-align:left; margin-top:50px">
+        <button type="submit">Add this Product</button>
+    </div>
+</form>

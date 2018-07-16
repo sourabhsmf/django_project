@@ -1,0 +1,25 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet"> 
+<style>
+    span{font-family: 'Roboto Mono';}
+</style>
+<h1>Try out these stuff</h1> 
+    <div class="product-add" style="display:inline-grid;width:15%">
+        <a href="{% url 'product:add' %}">Add</a>  
+    </div>
+    <div class="product-list" style="display:inline-grid;width:auto">
+        <ul>
+            {% for product in products %}
+                <li>
+                    <span>{{ product.productName }} Rs {{ product.productPrice }} </span>
+                    <!--Add curreny support;For now go along with Ruppees-->
+                    
+                    <div class="product-operations" >
+                        <span>
+                            <a href="{% url 'product:delete' product.id%}">Delete</a>  
+                            <a href="{% url 'product:view' product.id%}">View</a>
+                        </span> 
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
