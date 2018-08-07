@@ -1,25 +1,42 @@
-<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet"> 
-<style>
-    span{font-family: 'Roboto Mono';}
-</style>
-<h1>Try out these stuff</h1> 
-    <div class="product-add" style="display:inline-grid;width:15%">
-        <a href="{% url 'product:add' %}">Add</a>  
+{% extends "./base.html" %}
+{% block content %}
+<h1 class="col-sm-5">Try out these stuff</h1> 
+    <div class="product-add col-sm-5 " style="text-align:right">
+        <a href="{% url 'product:add' %}"><i class="fa fa-plus-circle" style="font-size:50px;color:cadetblue"></i></a>  
     </div>
-    <div class="product-list" style="display:inline-grid;width:auto">
-        <ul>
-            {% for product in products %}
-                <li>
-                    <span>{{ product.productName }} Rs {{ product.productPrice }} </span>
-                    <!--Add curreny support;For now go along with Ruppees-->
-                    
-                    <div class="product-operations" >
-                        <span>
-                            <a href="{% url 'product:delete' product.id%}">Delete</a>  
-                            <a href="{% url 'product:view' product.id%}">View</a>
-                        </span> 
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
+    <div class="product-list col-sm-10">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for product in products %}
+                <tr>
+                    <td>
+                        <!--Add curreny support;For now go along with Ruppees-->
+                        <!---Added HTmL support-->    
+                        <span>{{ product.productName }}</span>
+                    </td>
+                    <td> 
+                        &#8377; {{ product.productPrice }} </span>
+                    </td>
+                    <td>    
+                        <div class="product-operations" >
+                            <span>
+                                <a href="{% url 'product:delete' product.id%}">Delete<i class="fa fa-trash"></i></a>  
+                                <a href="{% url 'product:view' product.id%}">View<i class="fa fa-eye"></i></a>
+                                <a href="#">Analyze<i class="fas fa-chart-line"></i></a>
+                             </span> 
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
+{% endblock %}
