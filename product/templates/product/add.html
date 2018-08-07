@@ -1,44 +1,64 @@
 {% extends "./base.html" %}
 {% block content %}
     <h1>Add Product </h1>
+        <div class="form-product-I col-sm-6">
             <form action="{% url 'product:add' %}" method="POST" id="form-add-product" class="form-horizontal">
                 {% csrf_token %}
                 <div class="product-body">
                     <div class="form-group">
-                        <label class="control-label col-sm-4" for="product_name">Name</label>
-                        <div class="col-sm-4">
+                        <label class="control-label col-sm-1" for="product_name">Name</label>
+                        <div class="col-sm-10">
                             <input class="form-control" type="text" name="product_name" {% if form.product_name %} value= "{{form.product_name.value}}" {% else %} placeholder="Name goes here" {% endif %}>
-                                {% if form.product_name.errors %}<p >{% for error in form.product_name.errors %} {{ error }} {% endfor %}</p> {% endif %}
+                                <br>{% if form.product_name.errors %}<p >{% for error in form.product_name.errors %} {{ error }} {% endfor %}</p> {% endif %}
                         </div>  
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-4" for="product_price">Price</label>
-                        <div class="col-sm-4">
+                        <label class="control-label col-sm-1" for="product_price">Price</label>
+                        <div class="col-sm-10">
                             <input class="form-control" type="text" name="product_price" {% if form.product_price %} value= "{{form.product_price.value}}" {% else %} placeholder="Price goes here" {% endif %}>
-                                {% if form.product_price.errors %}<p >{% for error in form.product_price.errors %} {{ error }}{% endfor %}</p> {% endif %}
+                                <br>{% if form.product_price.errors %}<p >{% for error in form.product_price.errors %} {{ error }}{% endfor %}</p> {% endif %}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-4" for="product_url">Price</label>
-                        <div class="col-sm-4">
+                        <label class="control-label col-sm-1" for="product_url">URL</label>
+                        <div class="col-sm-10">
                             <input class="form-control" type="text" name="product_url" {% if form.product_url %} value="{{form.product_url.value}}" {% else %} placeholder="URL goes here" {% endif %}>
-                            {% if form.product_url.errors %}<p >{% for error in form.product_url.errors %} {{ error }} {% endfor %}</p> {% endif %}
+                            <br>{% if form.product_url.errors %}<p >{% for error in form.product_url.errors %} {{ error }} {% endfor %}</p> {% endif %}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-4" for="product_url">Price</label>
-                        <div class="col-sm-4">
+                        <label class="control-label col-sm-1" for="product_image">Image</label>
+                        <div class="col-sm-10">
                             <input class="form-control" type="file" name="product_image" id="" > 
                         </div>
                     </div>
                 </div>
                 <div class="product-footer" style="text-align:left; margin-top:50px">
                     <div class="form-group">
-                        <div class="col-sm-10 col-sm-offset-4">
+                        <div class="col-sm-3 col-sm-offset-1">
                             <button type="submit" class="btn btn-primary btn-md">Add this Product</button>
                         </div>
                     </div>
                 </div>
             </form>
-        
+        </div>
+        <h1 style="padding-top: 10% 0 0 0;width:5%" class="col-sm-5">OR</h1>
+        <div class="form-product-F col-sm-5 col-sm-offset-1">
+            <form action="{% url 'product:add' %}" method="POST" id="form-add-product" class="form-horizontal">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="control-label col-sm-1" for="product_url">URL</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="product_url" {% if form.product_url %} value="{{form.product_url.value}}" {% else %} placeholder="URL goes here" {% endif %}>
+                        <br>{% if form.product_url.errors %}<p >{% for error in form.product_url.errors %} {{ error }} {% endfor %}</p> {% endif %}
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-sm-3 col-sm-offset-1">
+                        <button type="submit" class="btn btn-primary btn-md">Fetch Product</button>
+                    </div>
+                </div>
+            </form>
+        </div>
 {% endblock %}
