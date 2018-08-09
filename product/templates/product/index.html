@@ -4,7 +4,7 @@
     <div class="product-add col-sm-5 " style="text-align:right">
         <a href="{% url 'product:add' %}"><i class="fa fa-plus-circle" style="font-size:50px;color:cadetblue"></i></a>  
     </div>
-    <div class="product-list col-sm-10">
+    <div class="product-list col-sm-12">
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -30,7 +30,7 @@
                             <span>
                                 <a href="{% url 'product:delete' product.id%}">Delete<i class="fa fa-trash"></i></a>  
                                 <a href="{% url 'product:view' product.id%}">View<i class="fa fa-eye"></i></a>
-                                <a href="#">Analyze<i class="fas fa-chart-line"></i></a>
+                                <a href="#">Analyze<i class="fa fa-bar-chart"></i></a>
                              </span> 
                         </div>
                     </td>
