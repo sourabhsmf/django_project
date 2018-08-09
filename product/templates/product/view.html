@@ -1,6 +1,15 @@
-<h1>View Product </h1>
+{% extends "./navbar.html" %}
+{% block mainContent %}
 
-<h2>{{product.productName}}</h2>
-<span><strong>{{product.productPrice}}</strong></span>
-
-<img src="/{{ product.productImage}}"></img>
+    <div class="container-fluid">
+        {% load static %}
+        <img class="col-sm-4" src="{%static 'images/products/medium04-800x800.jpg' %}"></img>
+        <div class="col-sm-8" style="margin-top:10%">
+            <span style="font-size:15px">{{product.productName}}</span>  
+            <i class="fa fa-pencil-square-o" style="font-size:20px" tooltip="Click to Edit" aria-hidden="true" onclick="edit_product_name()"></i>
+            <br><br>
+            <span><strong>&#8377;{{product.productPrice}}</strong></span>
+            <i class="fa fa-pencil-square-o" style="font-size:20px" tooltip="Click to Edit" aria-hidden="true" onclick="edit_product_price()"></i>
+        </div> 
+    </div>
+{% endblock  %}
