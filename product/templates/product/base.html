@@ -16,9 +16,12 @@
     </head>
 
     <body>
-        {% block navbarContent %}{% endblock %}
-        {% block mainContent%}
+        <!--Navbar-->
+        {% include "./navbar.html" %}
+    
+        <!--mainContent-->
+        {% block mainContent %}
         
-        {% endblock  %}   
+        {% endblock %}   
     </body>
 </html>
