@@ -1,5 +1,12 @@
 {% extends "./base.html" %}
-{% block content %}
+
+{% block addNav %}
+    <li><a href="#">Area-Chart</a></li>
+    <li><a href="#">Bar-Graph</a></li>
+    <li><a href="#">Pie-Chart</a></li>
+                            
+{% endblock %}
+{% block mainContent %}
     <h1>Add Product </h1>
         <div class="form-product-I col-sm-6">
             <form action="{% url 'product:add' %}" method="POST" id="form-add-product" class="form-horizontal">

@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 
 def index(request):
-    context = {'products' : Product.objects.all()}
+    context = {'products' : Product.objects.all() , 'navbar' : {'Content' , 'Popular'}}
     return render(request, 'product/index.html' , context)
 
 def add(request):
@@ -18,13 +18,13 @@ def add(request):
             print(newProduct.id)
             return HttpResponseRedirect(redirect_to='view/' + str(newProduct.id))
         else:
-            return render(request, 'product/add.html', context={'form':form})
+            return render(request, 'product/add.html', context={'form':form , 'navbar' : {'Content'}})
     else:
-        return render(request, 'product/add.html')
+        return render(request, 'product/add.html' , context = {'navbar' : {'Content'}})
         
 
 def delete(request, productId):
     return render(request, 'product/delete.html' , {'product': get_object_or_404(klass=Product, id=productId)})
 
 def view(request, productId):
-    return render(request, 'product/view.html', {'product': get_object_or_404(klass=Product, id=productId)})
+    return render(request, 'product/view.html', context = {'product': get_object_or_404(klass=Product, id=productId) , 'navbar' : {'Area-Chart' , 'Pie-Chart' , 'Bar-Graph'}})
